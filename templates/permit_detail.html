@@ -1,0 +1,19 @@
+<!-- detail view for a single permit -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} {{permit.neighbourhood}} {{permit.building_type}} {% endblock %}</h1>
+    <a href="{{ url_for('index') }}">Back</a>
+    <div class="permit">
+      <!-- clean layout of permit details -->
+      <p>Permit Date: {{permit.permit_date}}</p>
+      <p>Units Added: {{permit.units_added}}</p>
+      <p>Neighbourhood: {{permit.neighbourhood}}</p>
+      <p>Job Description: {{permit.job_description}}</p>
+      <p>Building Type: {{permit.building_type}}</p>
+      <p>Address: {{permit.address}}</p>
+      <p>Construction Value: {{permit.construction_value}}</p>
+      <p>Permit Number: {{permit.row_id}}</p>
+      <a class='btn' target="_blank" href="https://maps.google.com/?q={{permit.latitude}},{{permit.longitude}}">Open in Google Maps</a>
+    </div>
+{% endblock %}

@@ -9,10 +9,9 @@ def n_days_ago(n: int) -> datetime.date:
     return datetime.date.today() - datetime.timedelta(days=n)
 
 
-def fetch_recent_multifamily():
-    # SoQL query parameters
-    days_ago = 7 * 3
+def fetch_recent_multifamily(days_ago=21):
     earliest_date = n_days_ago(days_ago).strftime("%Y-%m-%d")
+    # SoQL query parameters
     params = {
         "$order": "permit_date DESC",
         "$where": f"permit_date > '{earliest_date}' AND units_added > 10",
@@ -31,6 +30,13 @@ def fetch_blatchford_permits(days_ago: int = 365):
     }
     resp = requests.get(url, params=params)
     return resp.json()
+
+
+def fetch_permit(permit_id: str):
+    params = {"row_id": permit_id}
+    resp = requests.get(url, params=params)
+    data = resp.json()
+    return data[0] if len(data) > 0 else None
 
 
 # permits = fetch_permits()

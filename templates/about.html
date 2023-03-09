@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} About {% endblock %}</h1>
+    <div>
+      <p>This site displays recently issued building permits for apartments and other dense housing forms in Edmonton, Alberta.</p>
+      <p>Data is pulled live from 
+        <a href="https://data.edmonton.ca/Urban-Planning-Economy/General-Building-Permits/24uj-dj8v">the City of Edmonton's General Building Permits dataset</a>.</p>
+    </div>
+{% endblock %}

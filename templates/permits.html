@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Permits {% endblock %}</h1>
+    <div class="permits-page">
+      <!-- table layout of permits -->
+      <p>Permits for mid-high density developments (>10 units) issued in the last {{days_ago}} days in Edmonton. Click on a row to view the full permit.</p>
+      <table>
+        <tr>
+          <th align="left">Permit Date</th>
+          <th align="left">Neighbourhood</th>
+          <th align="right">Units Added</th>
+          <th align="left">Job Description</th>
+        </tr>
+        {% for permit in permits %}
+        <!-- go to /permit/{{permit.row_id}}} on click -->
+          <tr onclick="window.location += 'permits/{{permit.row_id}}'">
+            <td align="left">{{ permit.permit_date }}</td>
+            <td align="left" >{{ permit.neighbourhood}}</td>
+            <td align="right">{{ permit.units_added}}</td>
+            <td align="left" >{{ permit.description_preview }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+{% endblock %}
