@@ -1,3 +1,5 @@
 permits.py
 .vscode
 venv
+__pycache__
+cache.sqlite
